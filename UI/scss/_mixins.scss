@@ -1,0 +1,16 @@
+/*_mixins.scss*/
+
+@mixin port-style {
+    position:           absolute;
+    left:               0;
+    top:                0;
+    width:              $port-diameter;
+    height:             $port-diameter;
+    box-sizing:         border-box;
+    border:             1px solid rgba(0,0,0,0.7);
+    border-radius:      50%;
+    margin-left:        -$port-diameter / 2;
+    margin-top:         -$port-diameter / 2;
+    background-color:   #FFF;
+    z-index:            2;
+}

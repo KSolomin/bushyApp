@@ -1,0 +1,39 @@
+/*_cmenu.scss*/
+
+.cmenu {
+    position:   absolute;
+    list-style: none;
+    left:       0;
+    top:        0;
+    border:     1px solid #bababa;
+    padding:    3px 0;
+    min-width:      122px;
+    background-color: #FFF;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    z-index:    3;
+
+    li {
+        line-height: 21px;
+        padding-right:  35px;
+        margin-top: 2px;
+
+        img {
+            border: none;
+            position: relative;
+            top: 2px;
+            margin: 0 10px;
+            width:  15px;
+            height: 15px;
+        }
+    }
+
+    li:first-child {
+        margin-top: 0;
+    }
+
+    li:hover {
+        background-color: #4281f4;
+        color:  #FFF;
+        outline:    1px solid #4281f4;
+    }
+}

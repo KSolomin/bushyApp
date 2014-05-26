@@ -1,0 +1,23 @@
+/*_node.scss*/
+
+.node {
+    position: absolute;
+    outline: 1px solid black;
+    z-index: 1;
+
+    left:   15px;   //default left pos;
+    top:    15px;   //default top pos;
+
+    background-color: white;
+
+    padding: 15px;
+
+    width: 100px;   //default width;
+    height: 60px;   //default height;
+
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+
+    .port {
+        @include port-style;
+    }
+}

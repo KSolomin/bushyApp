@@ -1,0 +1,90 @@
+body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.header {
+  position: absolute; //OR FIXED
+  height: 40px;
+  width: 100%;
+  background-color: black;
+  margin: -8px 0px 0px -8px;
+  z-index: 10;
+
+  .logo {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    top: 5px;
+    left: 10px;
+    //background-color: red;
+  }
+}
+.menu {
+  position: absolute;
+  height: 100%;
+  width: 300px;
+  top: 40px;
+  float: left;
+  //background-color: goldenrod;
+  margin-left: -8px;
+  font-family: Verdana, sans-serif;
+  .utils {
+    position: relative;
+    height: 410px;
+    width: 90%;
+    top: 10%;
+    left: 5%;
+    //background-color: navajowhite;
+    .util-block {
+      position: relative;
+      height: 90px;
+      width: 90%;
+      top: 10%;
+      left: 5%;
+      margin-bottom: 20px;
+      //background-color: yellowgreen;
+      .button-block {
+        position: relative;
+        display: block;
+        top: 15px;
+        left: 10px;
+        .button {
+          height:40px;
+          width:40px;
+          margin-right: 15px;
+        }
+      }
+    }
+    .functions-block {
+      position: relative;
+      height: 140px;
+      width: 90%;
+      top: 10%;
+      left: 5%;
+      margin-bottom: 20px;
+      //background-color: indigo;
+      .main-functions {
+        position:relative;
+        width: 90%;
+        left: 5%;
+        .button {
+          display: block;
+          height:30px;
+          width:150px;
+          margin-top:6px;
+        }
+      }
+    }
+  }
+}
+
+.workspace {
+  position: absolute;
+  height: 100%;
+  right: 0px;
+  left: 300px;
+  top: 40px;
+  float: right;
+}

@@ -1,0 +1,206 @@
+/*base.scss*/
+/*_global.scss*/
+* {
+  -webkit-user-select: none;
+  box-sizing: border-box;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.outline {
+  outline: 1px dotted rgba(0, 0, 0, 0.5);
+}
+
+/*_variables.scss*/
+/*_mixins.scss*/
+/*_cmenu.scss*/
+.cmenu {
+  position: absolute;
+  list-style: none;
+  left: 0;
+  top: 0;
+  border: 1px solid #bababa;
+  padding: 3px 0;
+  min-width: 122px;
+  background-color: #FFF;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+.cmenu li {
+  line-height: 21px;
+  padding-right: 35px;
+  margin-top: 2px;
+}
+.cmenu li img {
+  border: none;
+  position: relative;
+  top: 2px;
+  margin: 0 10px;
+  width: 15px;
+  height: 15px;
+}
+.cmenu li:first-child {
+  margin-top: 0;
+}
+.cmenu li:hover {
+  background-color: #4281f4;
+  color: #FFF;
+  outline: 1px solid #4281f4;
+}
+
+html {
+  font-size: 12px;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+.cmenu {
+  font-size: 12px;
+}
+
+.node {
+  text-align: center;
+}
+
+/*_grid.scss*/
+#grid {
+  position: absolute;
+  z-index: 0;
+}
+
+/*_connectives.scss*/
+.influx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -1px;
+  background-image: url(/img/element-influx.png);
+  background-position: 10px 0;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.influx .port {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: #FFF;
+  z-index: 2;
+  left: 20px;
+}
+
+.furcation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -1px;
+  margin-left: -1px;
+  background-image: url(/img/element-furcation.png);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.furcation .port {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: #FFF;
+  z-index: 2;
+  left: 10px;
+  top: 10px;
+}
+
+.conflux {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -1px;
+  margin-left: -1px;
+  background-image: url(/img/element-conflux.png);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.conflux .port {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: #FFF;
+  z-index: 2;
+  top: 10px;
+  left: 1px;
+}
+
+/*_node.scss*/
+.node {
+  position: absolute;
+  outline: 1px solid black;
+  z-index: 1;
+  left: 15px;
+  top: 15px;
+  background-color: white;
+  padding: 15px;
+  width: 100px;
+  height: 60px;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+.node .port {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: #FFF;
+  z-index: 2;
+}
+
+/*_arc.scss*/
+.arc {
+  position: absolute;
+  left: 15;
+  top: 15;
+}
+
+.arrow {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

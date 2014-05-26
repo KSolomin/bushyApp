@@ -1,0 +1,63 @@
+/*_connectives.scss*/
+
+.influx {
+    $influx-diameter:   20px;
+
+    position:               absolute;
+    top:                    0;
+    left:                   0;
+    width:                  $influx-diameter;
+    height:                 $influx-diameter;
+    margin-top:             -1px;               //correct influx position on the grid;
+    background-image:       url(/img/element-influx.png);
+    background-position:    $influx-diameter/2 0;
+    background-repeat:      no-repeat;
+    z-index:                1;
+
+    .port {
+        @include port-style;
+        left:   $influx-diameter;
+    }
+}
+
+.furcation {
+    $furc-diameter: 20px;
+
+    position: absolute;
+    top:                    0;
+    left:                   0;
+    width:                  $furc-diameter;
+    height:                 $furc-diameter;
+    margin-top:             -1px;
+    margin-left:            -1px;
+    background-image:       url(/img/element-furcation.png);
+    background-repeat:      no-repeat;
+    z-index: 1;
+
+    .port {
+        @include port-style;
+        left:   $furc-diameter/2;
+        top:    $furc-diameter/2;
+    }
+}
+
+.conflux {
+    $conflux-diameter: 20px;
+
+    position: absolute;
+    top:                    0;
+    left:                   0;
+    width:                  $conflux-diameter;
+    height:                 $conflux-diameter;
+    margin-top:             -1px;
+    margin-left:            -1px;
+    background-image:       url(/img/element-conflux.png);
+    background-repeat:      no-repeat;
+    z-index: 1;
+
+    .port {
+        @include port-style;
+        top:    $conflux-diameter/2;
+        left:   1px;
+    }
+}
