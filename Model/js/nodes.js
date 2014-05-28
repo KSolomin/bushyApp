@@ -59,50 +59,6 @@ function iiiNode(id) {
 
 extend(iiiNode, bushyNode);
 
-//сраный кустяра. наверное глобальный объект с которым работает все-все-все.
-function Bush(userId) {
-    this.user = userId;
-}
-
-Bush.prototype = {
-    user: '',
-    id: '',
-    name: '',
-    eventCounter: 0,
-    unionCounter: 0,
-    events: [],
-    unions: [],
-    // возможно разделение на ивенты по типу
-    // в методах будет пиздец функциональности
-    rename: function(name) {
-        this.name = name;
-    },
-    addEvent: function(event) {
-        this.events.push(event);
-        this.eventCounter++;
-    },
-    deleteEvent: function(eventId) {
-        for (var i = 0; i < this.events.length; i++) {
-            if (this.events[i].id === eventId) {
-                this.events.remove(i);
-                this.counter--;
-            }
-        }
-    },
-    addUnion: function(union) {
-        this.unions.push(union);
-        this.unionCounter++;
-    },
-    deleteUnion: function(unionId) {
-        for (var i = 0; i < this.events.length; i++) {
-            if (this.unions[i].id === unionId) {
-                this.unions.remove(i);
-                this.unionCounter--;
-            }
-        }
-    }
-}
-
 // utilities functions
 function extend(Child, Parent) {
     var F = function() { };

@@ -1,11 +1,13 @@
 <html>
 <head>
-    <script src="Logics/js/nodes.js"></script>
-    <script src="Logics/js/unions.js"></script>
-    <script src="test.js"></script>
     <script src="lib/underscore.js"></script>
     <script src="http://yui.yahooapis.com/3.16.0/build/yui/yui-min.js"></script>
-    <link rel="stylesheet" type="text/css" href="Logics/css/styles.css"/>
+    <script src="Model/js/bush.js"></script>
+    <script src="Model/js/nodes.js"></script>
+    <script src="Model/js/unions.js"></script>
+    <script src="Model/js/app.js"></script>
+    <script src="run.js"></script>
+    <link rel="stylesheet" type="text/css" href="Model/css/styles.css"/>
     <!--<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>-->
 </head>
 <body>
@@ -20,24 +22,24 @@
             <div class="util-block">
                 Add new nodes:
                 <div class="button-block">
-                    <button class="button" onclick="">Ia</button>
-                    <button class="button" onclick="">Ib</button>
-                    <button class="button" onclick="">II</button>
-                    <button class="button" onclick="">III</button>
+                    <button class="event-button" onclick="bushyApp.addEvent('ia')">Ia</button>
+                    <button class="event-button" onclick="bushyApp.addEvent('ib')">Ib</button>
+                    <button class="event-button" onclick="bushyApp.addEvent('ii')">II</button>
+                    <button class="event-button" onclick="bushyApp.addEvent('iii')">III</button>
                 </div>
             </div>
             <div class="util-block">
                 Add new unions:
                 <div class="button-block">
-                    <button class="button" onclick="">Flow</button>
-                    <button class="button" onclick="">Flux</button>
-                    <button class="button" onclick="">Furc</button>
+                    <button class="union-button" onclick="bushyApp.addUnion('influx')">Influx</button>
+                    <button class="union-button" onclick="bushyApp.addUnion('furcation')">Furcation</button>
+                    <button class="union-button" onclick="bushyApp.addUnion('conflux')">Conflux</button>
                 </div>
             </div>
             <div class="functions-block">
                 Main functions:
                 <div class="main-functions">
-                    <button class="button" onclick="">Validate!</button>
+                    <button class="button" onclick="console.log(bushyApp.bushyModel)">Log the bush</button>
                     <button class="button" onclick="">Save the Bush</button>
                     <button class="button" onclick="">Load some Bushes</button>
                 </div>
@@ -45,7 +47,7 @@
         </div>
     </div>
     <div class="workspace">
-        <iframe src="UI/index.html" seamless style="width:100%; height: 100%;">
+        <iframe id="workspace" src="View/index.html" style=" width:100%; height: 100%;">
         </iframe>
     </div>
 </body>

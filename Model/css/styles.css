@@ -7,7 +7,7 @@ body {
   position: absolute;
   height: 40px;
   width: 100%;
-  background-color: black;
+  background-color: #000000;
   margin: -8px 0px 0px -8px;
   z-index: 10;
 }
@@ -21,7 +21,7 @@ body {
 .menu {
   position: absolute;
   height: 100%;
-  width: 300px;
+  width: 200px;
   top: 40px;
   float: left;
   margin-left: -8px;
@@ -29,54 +29,58 @@ body {
 }
 .menu .utils {
   position: relative;
-  height: 410px;
+  height: 290px;
   width: 90%;
   top: 10%;
   left: 5%;
 }
 .menu .utils .util-block {
   position: relative;
-  height: 90px;
+  height: 60px;
   width: 90%;
-  top: 10%;
+  top: 5%;
   left: 5%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .menu .utils .util-block .button-block {
   position: relative;
   display: block;
-  top: 15px;
-  left: 10px;
+  top: 10px;
 }
-.menu .utils .util-block .button-block .button {
-  height: 40px;
-  width: 40px;
-  margin-right: 15px;
+.menu .utils .util-block .button-block .event-button {
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+}
+.menu .utils .util-block .button-block .union-button {
+  display: block;
+  height: 20px;
+  width: 100px;
+  margin-top: 6px;
 }
 .menu .utils .functions-block {
   position: relative;
-  height: 140px;
+  height: 100px;
   width: 90%;
-  top: 10%;
+  top: 25%;
   left: 5%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .menu .utils .functions-block .main-functions {
   position: relative;
   width: 90%;
-  left: 5%;
 }
 .menu .utils .functions-block .main-functions .button {
   display: block;
-  height: 30px;
-  width: 150px;
+  height: 20px;
+  width: 100px;
   margin-top: 6px;
 }
 .workspace {
   position: absolute;
   height: 100%;
   right: 0px;
-  left: 300px;
+  left: 200px;
   top: 40px;
   float: right;
 }

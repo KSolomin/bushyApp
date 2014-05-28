@@ -9,7 +9,7 @@
     width:                  $influx-diameter;
     height:                 $influx-diameter;
     margin-top:             -1px;               //correct influx position on the grid;
-    background-image:       url(/img/element-influx.png);
+    background-image:       url(../img/element-influx.png);
     background-position:    $influx-diameter/2 0;
     background-repeat:      no-repeat;
     z-index:                1;
@@ -30,7 +30,7 @@
     height:                 $furc-diameter;
     margin-top:             -1px;
     margin-left:            -1px;
-    background-image:       url(/img/element-furcation.png);
+    background-image:       url(../img/element-furcation.png);
     background-repeat:      no-repeat;
     z-index: 1;
 
@@ -51,7 +51,7 @@
     height:                 $conflux-diameter;
     margin-top:             -1px;
     margin-left:            -1px;
-    background-image:       url(/img/element-conflux.png);
+    background-image:       url(../img/element-conflux.png);
     background-repeat:      no-repeat;
     z-index: 1;
 

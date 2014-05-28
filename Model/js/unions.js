@@ -1,5 +1,6 @@
-function bushyUnion(id) {
+function bushyUnion(id, type) {
     this.id = id;
+    this.type = type;
 }
 
 bushyUnion.prototype = {
@@ -25,15 +26,15 @@ function flowUnion(id) {
 
 extend(flowUnion, bushyUnion);
 
-function fluxUnion(id) {
+function influxUnion(id) {
     this.id = id;
-    this.type = 'flux';
+    this.type = 'influx';
 }
 
-extend(fluxUnion, bushyUnion);
+extend(influxUnion, bushyUnion);
 
-fluxUnion.prototype.ibEvent = '';
-fluxUnion.prototype.setIbEvent = function(ibEvent) {
+influxUnion.prototype.ibEvent = '';
+influxUnion.prototype.setIbEvent = function(ibEvent) {
     this.ibEvent = ibEvent;
 }
 
@@ -45,7 +46,7 @@ function furcUnion(id) {
 
 extend(furcUnion, bushyUnion);
 
-furcUnion.prototype.addExit = function(event) {
+furcUnion.prototype.setExit = function(event) {
     this.exit.push(event);
 }
 
@@ -55,6 +56,17 @@ furcUnion.prototype.deleteExit = function(idToDelete) {
             this.exit.remove(i);
         }
     }
+}
+
+function confluxUnion(id) {
+    this.id = id;
+    this.type = 'conflux';
+}
+
+extend(confluxUnion, bushyUnion);
+
+confluxUnion.prototype.setEntry = function (event) {
+    this.entry.push(event);
 }
 
 // utilities functions
