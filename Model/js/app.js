@@ -6,7 +6,7 @@ var bushyApp = {
     unionCounter: 0,
     addEvent: function(type) {
         this.bushyModel.addEvent(this.eventCounter, type);
-        this.bushyView.node.create();
+        this.bushyView.node.create(type);
         this.eventCounter++;
     },
     addUnion: function(type) {

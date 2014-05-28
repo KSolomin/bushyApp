@@ -33,28 +33,91 @@ bushApp.node = {
                 .css('top', Math.floor(nodeDims.height / bushApp.grid.cellsize) * bushApp.grid.cellsize + 'px');
         }
     },
-    create:                 function () {
+    create:                 function (type) {
         'use strict';
-
         var node, nodeID;
-
         nodeID = bushApp.element.generateID('node');
+        switch(type) {
+            case 'ia':
+                $('<div></div>')
+                .attr('id', nodeID)
+                .attr('class', 'element node')
+                .insertBefore($('script').first())
+                .css('width', bushApp.node.width + 'px')
+                .css('height', bushApp.node.height + 'px')
+                    .append($('<p>Event description goes here.</p>'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_3'));
 
-        $('<div></div>')
-            .attr('id', nodeID)
-            .attr('class', 'element node')
-            .insertBefore($('script').first())
-            .css('width', bushApp.node.width + 'px')
-            .css('height', bushApp.node.height + 'px')
+                node = $('#' + nodeID);
+                bushApp.node.ports.setPosition(node);
+                return node;
+                break;
+
+            case 'ib':
+                $('<div></div>')
+                    .attr('id', nodeID)
+                    .attr('class', 'element node')
+                    .insertBefore($('script').first())
+                    .css('width', bushApp.node.width + 'px')
+                    .css('height', bushApp.node.height + 'px')
+                    .append($('<p>Event description goes here.</p>'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_4'));
+
+                node = $('#' + nodeID);
+                bushApp.node.ports.setPosition(node);
+                return node;
+                break;
+
+            case 'ii':
+                $('<div></div>')
+                    .attr('id', nodeID)
+                    .attr('class', 'element node')
+                    .insertBefore($('script').first())
+                    .css('width', bushApp.node.width + 'px')
+                    .css('height', bushApp.node.height + 'px')
                     .append($('<p>Event description goes here.</p>'))
                     .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_1'))
                     .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_2'))
                     .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_3'))
                     .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_4'));
 
-        node = $('#' + nodeID);
-        bushApp.node.ports.setPosition(node);
-        return node;
+                node = $('#' + nodeID);
+                bushApp.node.ports.setPosition(node);
+                return node;
+                break;
+
+            case 'iii':
+                $('<div></div>')
+                    .attr('id', nodeID)
+                    .attr('class', 'element node')
+                    .insertBefore($('script').first())
+                    .css('width', bushApp.node.width + 'px')
+                    .css('height', bushApp.node.height + 'px')
+                    .append($('<p>Event description goes here.</p>'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_1'));
+
+                node = $('#' + nodeID);
+                bushApp.node.ports.setPosition(node);
+                return node;
+                break;
+            default:
+                $('<div></div>')
+                    .attr('id', nodeID)
+                    .attr('class', 'element node')
+                    .insertBefore($('script').first())
+                    .css('width', bushApp.node.width + 'px')
+                    .css('height', bushApp.node.height + 'px')
+                    .append($('<p>Event description goes here.</p>'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_1'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_2'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_3'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_4'));
+
+                node = $('#' + nodeID);
+                bushApp.node.ports.setPosition(node);
+                return node;
+                break;
+        }
     },
     resize:                 function (node) {
         'use strict';

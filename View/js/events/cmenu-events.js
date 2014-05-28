@@ -17,21 +17,33 @@ function createLiHandler(type) {
         };
 
         switch (type) {
-        case 'node':
-            elem = bushApp.node.create();
-            break;
-        case 'influx':
-            elem = bushApp.influx.create();
-            break;
-        case 'furcation':
-            elem = bushApp.furcation.create();
-            break;
-        case 'conflux':
-            elem = bushApp.conflux.create();
-            break;
-        default:
-            window.console.log('Unknown type of element!');
-            return;
+            case 'node':
+                elem = bushApp.node.create();
+                break;
+            case 'ia':
+                elem = bushApp.node.create('ia');
+                break;
+            case 'ib':
+                elem = bushApp.node.create('ib');
+                break;
+            case 'ii':
+                elem = bushApp.node.create('ii');
+                break;
+            case 'iii':
+                elem = bushApp.node.create('iii');
+                break;
+            case 'influx':
+                elem = bushApp.influx.create();
+                break;
+            case 'furcation':
+                elem = bushApp.furcation.create();
+                break;
+            case 'conflux':
+                elem = bushApp.conflux.create();
+                break;
+            default:
+                window.console.log('Unknown type of element!');
+                return;
         }
 
         bushApp.cmenu.hide('.create');
@@ -51,6 +63,10 @@ $(document).off('contextmenu.cmenu').on('contextmenu.cmenu', function (e) {
     bushApp.cmenu.position('.create', e.pageX, e.pageY);
 
     createLiHandler('node');
+    createLiHandler('ia');
+    createLiHandler('ib');
+    createLiHandler('ii');
+    createLiHandler('iii');
     createLiHandler('influx');
     createLiHandler('furcation');
     createLiHandler('conflux');
