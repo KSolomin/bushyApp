@@ -6,26 +6,26 @@ var bushyApp = {
     unionCounter: 0,
     addEvent: function(type) {
         this.bushyModel.addEvent(this.eventCounter, type);
-        this.bushyView.node.create(type);
         this.eventCounter++;
+        return this.bushyView.node.create(type);
     },
     addUnion: function(type) {
         this.bushyModel.addUnion(this.unionCounter, type);
+        this.unionCounter++;
         switch (type) {
             case 'influx':
-                this.bushyView.influx.create();
+                return this.bushyView.influx.create();
                 break;
             case 'furcation':
-                this.bushyView.furcation.create();
+                return this.bushyView.furcation.create();
                 break;
             case 'conflux':
-                this.bushyView.conflux.create();
+                return this.bushyView.conflux.create();
                 break;
             default:
                 console.log('Fuck you: the type of union is incorrect');
                 break;
         }
-        this.unionCounter++;
     },
 
     //пока мы этого не умеем

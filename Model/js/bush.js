@@ -29,7 +29,7 @@ Bush.prototype = {
                 this.events.push(new iiiNode(id));
                 break;
             default:
-                console.log('Fuck you: the type of event is incorrect');
+                this.events.push(new bushyNode(id));
                 break;
         }
     },
