@@ -2,6 +2,7 @@
 var bushyApp = {
     bushyView: null,
     bushyModel: new Bush(1),
+    connector: connector,
     eventCounter: 0,
     unionCounter: 0,
     addEvent: function(type) {
@@ -13,6 +14,9 @@ var bushyApp = {
         this.bushyModel.addUnion(this.unionCounter, type);
         this.unionCounter++;
         switch (type) {
+            case 'flow':
+                // some code
+                break;
             case 'influx':
                 return this.bushyView.influx.create();
                 break;
