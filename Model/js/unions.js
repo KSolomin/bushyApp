@@ -19,12 +19,12 @@ bushyUnion.prototype = {
     }
 }
 
-function flowUnion(id) {
+function fluxUnion(id) {
     this.id = id;
-    this.type = 'flow';
+    this.type = 'flux';
 }
 
-extend(flowUnion, bushyUnion);
+extend(fluxUnion, bushyUnion);
 
 function influxUnion(id) {
     this.id = id;

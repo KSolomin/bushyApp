@@ -36,7 +36,6 @@ $(document).off('mousedown.port', '.port').on('mousedown.port', '.port', functio
         $(document).on('mouseup.port', function (e) {
             var mousePos, closest;
 
-            closest     = { port: null, dist: null };
             mousePos    = { x: e.pageX, y: e.pageY };
             mouseIsDown = false;
 
@@ -49,16 +48,15 @@ $(document).off('mousedown.port', '.port').on('mousedown.port', '.port', functio
                 portNum: res[3]
             }
 
-            console.log(endElement);
 
             if (closest.dist < app.bushyView.arc.snapDistance) {
                 app.connector.setConnection(startElement, endElement);
 
                 // поооолная чушь:
                 app.bushyView.arc.connectPorts(canvas, startPort, closest.port);
-                // if (endElementType === 'influx' || endElementType === 'furcation' || endElementType === 'conflux') {
-                    // canvas.next('.arrow').remove();
-                // }
+                 if (endElement.type === 'i' || endElement.type === 'f' || endElement.type === 'c') {
+                     canvas.next('.arrow').remove();
+                 }
             } else {
                 app.bushyView.arc.remove(canvas);
             }

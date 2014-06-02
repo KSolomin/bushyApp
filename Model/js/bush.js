@@ -42,8 +42,8 @@ Bush.prototype = {
     },
     addUnion: function(id, type) {
         switch (type) {
-            case 'flow':
-                this.unions.push(new flowUnion(id));
+            case 'flux':
+                this.unions.push(new fluxUnion(id));
                 break;
             case 'influx':
                 this.unions.push(new influxUnion(id));

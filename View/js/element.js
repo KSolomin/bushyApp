@@ -92,13 +92,13 @@ bushApp.element = {
                 return portNum;
             }
         },
-        getRadius:  function () {
+        /*getRadius:  function () {
             'use strict';
 
             var radius;
             radius = $('.port').first().width() / 2;
             return radius;
-        },
+        },*/
         show:   function (node) {
             'use strict';
 
@@ -152,30 +152,45 @@ bushApp.element = {
 
         var elem, elemID, insPoint, portNum;
 
+        elemID = bushApp.element.generateID(type);
+        insPoint = $('script').first();
+
         switch (type) {
         case 'influx':
-            portNum = 5;
+            var portNums = [5, 6];
+
+            elem = $('<div></div>')
+                .attr('class', 'element ' + type)
+                .attr('id', elemID)
+                .append($('<div></div>').attr('class', 'port hidden').attr('id', elemID + '_' + portNums[0]))
+                .append($('<div></div>').attr('class', 'port hidden').attr('id', elemID + '_' + portNums[1]).css('top', '10px'))
+                .insertBefore(insPoint);
+
             break;
         case 'furcation':
-            portNum = 6;
+            portNum = 7;
+
+            elem = $('<div></div>')
+                .attr('class', 'element ' + type)
+                .attr('id', elemID)
+                .append($('<div></div>').attr('class', 'port hidden').attr('id', elemID + '_' + portNum))
+                .insertBefore(insPoint);
+
             break;
         case 'conflux':
-            portNum = 7;
+            portNum = 8;
+
+            elem = $('<div></div>')
+                .attr('class', 'element ' + type)
+                .attr('id', elemID)
+                .append($('<div></div>').attr('class', 'port hidden').attr('id', elemID + '_' + portNum))
+                .insertBefore(insPoint);
+
             break;
         default:
             window.console.log('Unknown type of element!');
             break;
         }
-
-        elemID = bushApp.element.generateID(type);
-
-        insPoint = $('script').first();
-
-        elem = $('<div></div>')
-            .attr('class', 'element ' + type)
-            .attr('id', elemID)
-            .append($('<div></div>').attr('class', 'port hidden').attr('id', elemID + '_' + portNum))
-            .insertBefore(insPoint);
 
         return elem;
     },
@@ -222,7 +237,7 @@ bushApp.element = {
 
         return closest;
     },
-    getType:        function (element) {
+    /*getType:        function (element) {
         'use strict';
 
         var letter, type;
@@ -248,7 +263,7 @@ bushApp.element = {
             break;
         }
         return type;
-    },
+    }, */
     showBorders:    function (element) {
         'use strict';
 

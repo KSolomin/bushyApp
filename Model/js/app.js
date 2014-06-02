@@ -14,7 +14,7 @@ var bushyApp = {
         this.bushyModel.addUnion(this.unionCounter, type);
         this.unionCounter++;
         switch (type) {
-            case 'flow':
+            case 'flux':
                 // some code
                 break;
             case 'influx':

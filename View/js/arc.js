@@ -311,14 +311,18 @@ bushApp.arc = {
             type = 'lineToBottom';
             break;
         case 5:
+            canvas.addClass('lineToRight');
+            type = 'lineToRight';
+            break;
+        case 6:
             canvas.addClass('lineToBottom');
             type = 'lineToBottom';
             break;
-        case 6:
+        case 7:
             canvas.addClass('lineFromFurc');
             type = 'lineFromFurc';
             break;
-        case 7:
+        case 8:
             canvas.addClass('lineToRight');
             type = 'lineToRight';
             break;
@@ -328,7 +332,7 @@ bushApp.arc = {
         }
         return type;
     },
-    getType:            function (canvas) {
+    /*getType:            function (canvas) {
         'use strict';
 
         var type;
@@ -349,7 +353,7 @@ bushApp.arc = {
         }
 
         return type;
-    },
+    },*/
     connectPortToMouse: function (canvas, portPos, mousePos, arcType) {
         'use strict';
 
@@ -408,17 +412,20 @@ bushApp.arc = {
         changeID(canvas, endPort);
 
         if (pNum.start === 1 || pNum.start === 2) { isValid = false; }
-        if (pNum.start === 3) {
-            if (pNum.end === 2 || pNum.end === 3 || pNum.end === 4) { isValid = false; }
+        if (pNum.start === 3) { // правый выход ноды
+            if (pNum.end === 2 || pNum.end === 3 || pNum.end === 4 || pNum.end === 6) { isValid = false; }
         }
-        if (pNum.start === 4) {
-            if (pNum.end === 1 || pNum.end === 3 || pNum.end === 4 || pNum.end === 6 || pNum.end === 7) { isValid = false; }
+        if (pNum.start === 4) { // нижний выход ноды
+            if (pNum.end === 1 || pNum.end === 3 || pNum.end === 4 || pNum.end === 6 || pNum.end === 7 || pNum.end === 8) { isValid = false; }
         }
-        if (pNum.start === 5) {
-            if (pNum.end === 1 || pNum.end === 3 || pNum.end === 4 || pNum.end === 5 || pNum.end === 6 || pNum.end === 7) { isValid = false; }
+        if (pNum.start === 5) { // правый выход инфлюкса
+            if (pNum.end === 2 || pNum.end === 3 || pNum.end === 4 || pNum.end === 5 || pNum.end === 6 || pNum.end === 7 || pNum.end === 8) { isValid = false; }
         }
-        if (pNum.start === 6 || pNum.start === 7) {
-            if (pNum.end === 2 || pNum.end === 3 || pNum.end === 4 || pNum.end === 5 || pNum.end === 6 || pNum.end === 7) { isValid = false; }
+        if (pNum.start === 6) { // нижний выход инфлюкса
+            if (pNum.end === 1 || pNum.end === 3 || pNum.end === 4 || pNum.end === 5 || pNum.end === 7 || pNum.end === 8) { isValid = false; }
+        }
+        if (pNum.start === 7 || pNum.start === 8) {
+            if (pNum.end === 2 || pNum.end === 3 || pNum.end === 4 || pNum.end === 5 || pNum.end === 6 || pNum.end === 7 || pNum.end === 8) { isValid = false; }
         }
 
         if (isValid) {
@@ -453,12 +460,20 @@ bushApp.arc = {
                         }
                     }
                 }
-                bushApp.arc.lineToBottom(canvas, pos.start, pos.end);
+                bushApp.arc.lineToRight(canvas, pos.start, pos.end);
                 break;
             case 6:
-                bushApp.arc.lineFromFurc(canvas, pos.start, pos.end);
+                if (arcs.start.all.length !== 0) {
+                    for (i = 0; i < arcs.start.all.length; i += 1) {
+                        bushApp.arc.remove(arcs.start.all[i]);
+                    }
+                }
+                bushApp.arc.lineToBottom(canvas, pos.start, pos.end);
                 break;
             case 7:
+                bushApp.arc.lineFromFurc(canvas, pos.start, pos.end);
+                break;
+            case 8:
                 if (arcs.start.all.length !== 0) {
                     for (i = 0; i < arcs.start.all.length; i += 1) {
                         if (arcs.start.all[i].next('.arrow').length !== 0) {
@@ -517,7 +532,7 @@ bushApp.arc = {
                     }
                 }
                 break;
-            case 6:
+            case 7:
                 if (arcs.end.all.length !== 0) {
                     for (i = 0; i < arcs.end.all.length; i += 1) {
                         if (arcs.end.all[i].next('.arrow').length === 0) {
@@ -526,7 +541,7 @@ bushApp.arc = {
                     }
                 }
                 break;
-            case 7:
+            case 8:
                 bushApp.arc.lineToConflux(canvas, pos.start, pos.end);
                 break;
             default:
