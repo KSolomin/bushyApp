@@ -113,20 +113,24 @@ bushApp.element = {
     generateID:     function (type) {
         'use strict';
 
-        var elemID, elems, letter;
+        var elemID, elems, letter, union;
 
         switch (type) {
         case 'node':
             letter = 'n';
+            union = false;
             break;
         case 'influx':
             letter = 'i';
+            union = true;
             break;
         case 'furcation':
             letter = 'f';
+            union = true;
             break;
         case 'conflux':
             letter = 'c';
+            union = true;
             break;
         default:
             window.console.log('Unknown type of element!');
@@ -135,15 +139,52 @@ bushApp.element = {
 
         elemID = letter + '0';
 
-        elems = $('.' + type);
+        if (union) {
+            var influxes = $('.influx');
+            var furcs = $('.furcation');
+            var confluxes = $('.conflux');
 
-        if (elems.length !== 0) {
-            elemID = bushApp.element.pattern.exec(elems.last().attr('id'))[2];
-            elemID = parseInt(elemID, 10);
-            elemID += 1;
-            elemID = letter + elemID;
+            var getLast = function(arr) {
+                if (arr.length) {
+                    var res = parseInt(arr.last().attr('id').substr(1));
+                    return res + 1;
+                }
+            };
+
+            influxes = getLast(influxes);
+            furcs = getLast(furcs);
+            confluxes = getLast(confluxes);
+            var maxLastId;
+
+            if (influxes && furcs && confluxes) {
+                maxLastId = Math.max.apply(Math, [influxes, furcs, confluxes]);
+            } else if (influxes && furcs) {
+                maxLastId = Math.max.apply(Math, [influxes, furcs]);
+            } else if (influxes && confluxes) {
+                maxLastId = Math.max.apply(Math, [influxes, confluxes]);
+            } else if (furcs && confluxes) {
+                maxLastId = Math.max.apply(Math, [furcs, confluxes]);
+            } else if (influxes) {
+                maxLastId = influxes;
+            } else if (furcs) {
+                maxLastId = furcs;
+            } else if (confluxes) {
+                maxLastId = confluxes;
+            } else {
+                maxLastId = 0;
+            }
+            console.log(maxLastId);
+            elemID = letter + maxLastId;
         }
-
+        else {
+            elems = $('.' + type)
+            if (elems.length !== 0) {
+                elemID = bushApp.element.pattern.exec(elems.last().attr('id'))[2];
+                elemID = parseInt(elemID, 10);
+                elemID += 1;
+                elemID = letter + elemID;
+            }
+        }
         return elemID;
 
     },
