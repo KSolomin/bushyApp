@@ -11,11 +11,11 @@ bushyUnion.prototype = {
     setType: function(type) {
         this.type = type;
     },
-    setEntry: function(entry) {
-        this.entry = entry;
+    setEntry: function(entryId) {
+        this.entry = entryId;
     },
-    setExit: function(exit) {
-        this.exit = exit;
+    setExit: function(exitId) {
+        this.exit = exitId;
     }
 }
 
@@ -33,26 +33,38 @@ function influxUnion(id) {
 
 extend(influxUnion, bushyUnion);
 
-influxUnion.prototype.ibEvent = '';
-influxUnion.prototype.setIbEvent = function(ibEvent) {
-    this.ibEvent = ibEvent;
+influxUnion.prototype.topEntry = '';
+influxUnion.prototype.leftEntry = '';
+influxUnion.prototype.bottomExit = '';
+influxUnion.prototype.rightExit = '';
+influxUnion.prototype.setTopEntry = function(eventId) {
+    this.topEntry = eventId;
+}
+influxUnion.prototype.setLeftEntry = function(eventId) {
+    this.leftEntry = eventId;
+}
+influxUnion.prototype.setBottomExit = function(eventId) {
+    this.bottomExit = eventId;
+}
+influxUnion.prototype.setRightExit = function(eventId) {
+    this.rightExit = eventId;
 }
 
 function furcUnion(id) {
     this.id = id;
     this.type = 'furcation';
-    this.exit = []
+    this.exit = [];
 }
 
 extend(furcUnion, bushyUnion);
 
-furcUnion.prototype.setExit = function(event) {
-    this.exit.push(event);
+furcUnion.prototype.setExit = function(eventId) {
+    this.exit.push(eventId);
 }
 
 furcUnion.prototype.deleteExit = function(idToDelete) {
     for (var i = 0; i < this.exit.length; i++) {
-        if (this.exit[i].id === idToDelete) {
+        if (this.exit[i] === idToDelete) {
             this.exit.remove(i);
         }
     }
@@ -61,12 +73,13 @@ furcUnion.prototype.deleteExit = function(idToDelete) {
 function confluxUnion(id) {
     this.id = id;
     this.type = 'conflux';
+    this.entry = [];
 }
 
 extend(confluxUnion, bushyUnion);
 
-confluxUnion.prototype.setEntry = function (event) {
-    this.entry.push(event);
+confluxUnion.prototype.setEntry = function (eventId) {
+    this.entry.push(eventId);
 }
 
 // utilities functions

@@ -296,11 +296,9 @@ bushApp.arc = {
     },
     setType:            function (canvas, port) {
         'use strict';
-
         var pNum, type;
 
         pNum = bushApp.port.getNumber(port);
-
         switch (pNum) {
         case 3:
             canvas.addClass('lineToRight');
@@ -531,6 +529,8 @@ bushApp.arc = {
                         }
                     }
                 }
+                break;
+            case 6: // ???
                 break;
             case 7:
                 if (arcs.end.all.length !== 0) {

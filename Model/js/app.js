@@ -31,12 +31,21 @@ var bushyApp = {
                 break;
         }
     },
-
-    //пока мы этого не умеем
     removeEvent: function(id) {
+        this.bushyModel.deleteEvent(id);
 
+        if (this.bushyModel.events[0] != undefined) {
+            this.eventCounter = this.bushyModel.events[this.bushyModel.events.length - 1].id + 1;
+        }
+        else this.eventCounter = 0;
     },
-    removeUnion: function(id) {
 
+    removeUnion: function(id) {
+        this.bushyModel.deleteUnion(id);
+
+        if (this.bushyModel.unions[0] != undefined) {
+            this.unionCounter = this.bushyModel.unions[this.bushyModel.unions.length - 1].id + 1;
+        }
+        else this.unionCounter = 0;
     }
 }

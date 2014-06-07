@@ -20,29 +20,3 @@ $(document).off('contextmenu.cmenu').on('contextmenu.cmenu', function (e) {
         $(this).off('click.cmenu');
     });
 });
-
-$(document).off('contextmenu.cmenu', '.element').on('contextmenu.cmenu', '.element', function (e) {
-    'use strict';
-    var selectedElement;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    selectedElement = $(this);
-    bushApp.cmenu.hide('.create');
-    bushApp.cmenu.show('.remove');
-    bushApp.cmenu.position('.remove', e.pageX, e.pageY);
-
-    $('#remove-element').off('click.cmenu').on('click.cmenu', function () {
-
-        bushApp.node.removeConnectedArcs(selectedElement);
-        selectedElement.remove();
-
-        $(this).off('click.cmenu');
-    });
-
-    $(document).off('click.cmenu').on('click.cmenu', function () {
-        bushApp.cmenu.hide('.remove');
-        $(this).off('click.cmenu');
-    });
-});

@@ -35,7 +35,7 @@ Bush.prototype = {
     },
     deleteEvent: function(id) {
         for (var i = 0; i < this.events.length; i++) {
-            if (this.events[i].id === id) {
+            if (this.events[i].id == id) {
                 this.events.remove(i);
             }
         }
@@ -59,9 +59,9 @@ Bush.prototype = {
                 break;
         }
     },
-    deleteUnion: function(unionId) {
-        for (var i = 0; i < this.events.length; i++) {
-            if (this.unions[i].id === unionId) {
+    deleteUnion: function(id) {
+        for (var i = 0; i < this.unions.length; i++) {
+            if (this.unions[i].id == id) {
                 this.unions.remove(i);
             }
         }

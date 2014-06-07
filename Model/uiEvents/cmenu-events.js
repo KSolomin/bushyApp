@@ -54,4 +54,54 @@ function createLiHandler(type) {
 
         $(this).off('click.cmenu');
     });
+
+    $(document).off('contextmenu.cmenu', '.element').on('contextmenu.cmenu', '.element', function (e) {
+        'use strict';
+        var selectedElement;
+        var app = window.parent.bushyApp;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        selectedElement = $(this);
+
+        var elementId = selectedElement.attr('id').substr(1);
+        var elementType = selectedElement.attr('id').substr(0, 1);
+
+        bushApp.cmenu.hide('.create');
+        bushApp.cmenu.show('.remove');
+        bushApp.cmenu.position('.remove', e.pageX, e.pageY);
+
+        $('#remove-element').off('click.cmenu').on('click.cmenu', function () {
+
+         bushApp.node.removeConnectedArcs(selectedElement);
+
+            switch (elementType) {
+                case 'n':
+                    app.removeEvent(elementId);
+                    break;
+                case 'f':
+                    app.removeUnion(elementId);
+                    break;
+                case 'i':
+                    app.removeUnion(elementId);
+                    break;
+                case 'c':
+                    app.removeUnion(elementId);
+                    break;
+                default:
+                    console.log('Unknown type of element');
+            }
+
+
+         selectedElement.remove();
+
+         $(this).off('click.cmenu');
+         });
+
+        $(document).off('click.cmenu').on('click.cmenu', function () {
+            bushApp.cmenu.hide('.remove');
+            $(this).off('click.cmenu');
+        });
+    });
 };

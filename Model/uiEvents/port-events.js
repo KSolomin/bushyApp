@@ -18,8 +18,6 @@ $(document).off('mousedown.port', '.port').on('mousedown.port', '.port', functio
         portNum: res[3]
     };
 
-    console.log(startElement);
-
     canvas  = app.bushyView.arc.create(startPort);
     arcType = app.bushyView.arc.setType(canvas, startPort);
 

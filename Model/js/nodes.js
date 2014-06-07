@@ -23,8 +23,8 @@ function iaNode(id) {
 extend(iaNode, bushyNode);
 
 iaNode.prototype.externalUnion = '';
-iaNode.prototype.setExternalUnion = function(union) {
-    this.externalUnion = union;
+iaNode.prototype.setExternalUnion = function(unionId) {
+    this.externalUnion = unionId;
 }
 
 function ibNode(id) {
@@ -36,8 +36,8 @@ extend(ibNode, bushyNode);
 
 // must specify that node can only be an influx!!
 ibNode.prototype.externalUnion = '';
-ibNode.prototype.setExternalUnion = function(union) {
-    this.setExternalUnion = union;
+ibNode.prototype.setExternalUnion = function(unionId) {
+    this.externalUnion = unionId;
 }
 
 function iiNode(id) {
@@ -48,13 +48,13 @@ function iiNode(id) {
 extend(iiNode, bushyNode);
 
 iiNode.prototype.internalUnion = '';
-iiNode.prototype.setInternalUnion = function(union) {
-    this.internalUnion = union;
+iiNode.prototype.setInternalUnion = function(unionId) {
+    this.internalUnion = unionId;
 }
 
 iiNode.prototype.externalUnion = '';
-iiNode.prototype.setExternalUnion = function(union) {
-    this.externalUnion = union;
+iiNode.prototype.setExternalUnion = function(unionId) {
+    this.externalUnion = unionId;
 }
 
 function iiiNode(id) {
@@ -65,8 +65,8 @@ function iiiNode(id) {
 extend(iiiNode, bushyNode);
 
 iiiNode.prototype.internalUnion = '';
-iiiNode.prototype.setInternalUnion = function(union) {
-    this.internalUnion = union;
+iiiNode.prototype.setInternalUnion = function(unionId) {
+    this.internalUnion = unionId;
 }
 
 // utilities functions
