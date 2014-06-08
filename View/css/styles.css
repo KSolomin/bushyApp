@@ -34,6 +34,7 @@
   background-color: #FFF;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   z-index: 3;
+  cursor: default;
 }
 .cmenu li {
   line-height: 21px;
@@ -89,6 +90,7 @@ html {
   background-position: 10px 0;
   background-repeat: no-repeat;
   z-index: 1;
+  cursor: pointer;
 }
 .influx .port {
   position: absolute;
@@ -104,6 +106,7 @@ html {
   background-color: #FFF;
   z-index: 2;
   left: 20px;
+  cursor: default;
 }
 
 .furcation {
@@ -117,6 +120,7 @@ html {
   background-image: url(../img/element-furcation.png);
   background-repeat: no-repeat;
   z-index: 1;
+  cursor: pointer;
 }
 .furcation .port {
   position: absolute;
@@ -133,6 +137,7 @@ html {
   z-index: 2;
   left: 10px;
   top: 10px;
+  cursor: default;
 }
 
 .conflux {
@@ -146,6 +151,7 @@ html {
   background-image: url(../img/element-conflux.png);
   background-repeat: no-repeat;
   z-index: 1;
+  cursor: pointer;
 }
 .conflux .port {
   position: absolute;
@@ -162,6 +168,7 @@ html {
   z-index: 2;
   top: 10px;
   left: 1px;
+  cursor: default;
 }
 
 /*_node.scss*/
@@ -176,6 +183,7 @@ html {
   width: 100px;
   height: 60px;
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 .node .port {
   position: absolute;
@@ -190,6 +198,7 @@ html {
   margin-top: -5px;
   background-color: #FFF;
   z-index: 2;
+  cursor: default;
 }
 
 /*_arc.scss*/

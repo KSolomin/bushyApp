@@ -5,12 +5,14 @@ var connector = {
             //1) проверить что у первого нет исходящий союз
             if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(firstElem.id).externalUnion)) {
                 if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(firstElem.id).externalUnion).type == 'flux') {
+                    console.log('Im a catbug');
                     bushyApp.removeUnion(bushyApp.bushyModel.getEventById(firstElem.id).externalUnion);
                 }
             }
             //2) проверить что у второго входящего союза
             if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(secondElem.id).internalUnion)) {
-                if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(secondElem.id).internalUnion).type = 'flux') {
+                if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(secondElem.id).internalUnion).type == 'flux') {
+                    console.log('Im an impossibear');
                     bushyApp.removeUnion(bushyApp.bushyModel.getElementById(secondElem.id).internalUnion);
                 }
             }
