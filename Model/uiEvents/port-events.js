@@ -37,7 +37,7 @@ $(document).off('mousedown.port', '.port').on('mousedown.port', '.port', functio
             mousePos    = { x: e.pageX, y: e.pageY };
             mouseIsDown = false;
 
-            closest     = app.bushyView.element.getClosestPort(startPort, mousePos);
+            closest = app.bushyView.element.getClosestPort(startPort, mousePos);
             var res = pattern.exec(closest.port.attr('id'));
 
             var endElement = {

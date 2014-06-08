@@ -9,8 +9,6 @@ Bush.prototype = {
     name: '',
     events: [],
     unions: [],
-    // возможно разделение на ивенты по типу
-    // в методах будет пиздец функциональности
     rename: function(name) {
         this.name = name;
     },

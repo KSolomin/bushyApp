@@ -95,7 +95,6 @@ function createLiHandler(type) {
 
 
          selectedElement.remove();
-
          $(this).off('click.cmenu');
          });
 
@@ -103,5 +102,18 @@ function createLiHandler(type) {
             bushApp.cmenu.hide('.remove');
             $(this).off('click.cmenu');
         });
+    });
+
+    $('#portmenu').off('click.cmenu').on('click.cmenu', function (e) {
+        var elem, mousePos;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        mousePos = {
+            x: e.pageX,
+            y: e.pageY
+        };
+
     });
 };

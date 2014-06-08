@@ -1,62 +1,73 @@
 var connector = {
     setConnection: function(firstElem, secondElem) {
         // проверка, нужно ли удалять какую-то связь
-        if (firstElem.type === 'n' && secondElem.type === 'n') {
-            bushyApp.addUnion('flux');
-            var newFlux = bushyApp.bushyModel.unions[bushyApp.unionCounter - 1];
+        if (firstElem.type == 'n' && secondElem.type == 'n') {
+            //1) проверить что у первого нет исходящий союз
+            if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(firstElem.id).externalUnion)) {
+                if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(firstElem.id).externalUnion).type == 'flux') {
+                    bushyApp.removeUnion(bushyApp.bushyModel.getEventById(firstElem.id).externalUnion);
+                }
+            }
+            //2) проверить что у второго входящего союза
+            if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(secondElem.id).internalUnion)) {
+                if (bushyApp.bushyModel.getUnionById(bushyApp.bushyModel.getEventById(secondElem.id).internalUnion).type = 'flux') {
+                    bushyApp.removeUnion(bushyApp.bushyModel.getElementById(secondElem.id).internalUnion);
+                }
+            }
 
-            bushyApp.bushyModel.getEventById(firstElem.id).setExternalUnion(parseInt(newFlux.id));
-            bushyApp.bushyModel.getEventById(secondElem.id).setInternalUnion(parseInt(newFlux.id));
-            bushyApp.bushyModel.getUnionById(bushyApp.unionCounter - 1).setEntry(parseInt(firstElem.id));
-            bushyApp.bushyModel.getUnionById(bushyApp.unionCounter - 1).setExit(parseInt(secondElem.id));
+            //3) проверить что элемент не один и тот же!
+            // если нет, добавить союз
+            if (firstElem.id != secondElem.id) {
+                bushyApp.addUnion('flux'); //можно сделать через factory
+                var newFlux = bushyApp.bushyModel.getUnionById(bushyApp.unionCounter - 1);
+
+                bushyApp.bushyModel.getEventById(firstElem.id).setExternalUnion(parseInt(newFlux.id));
+                bushyApp.bushyModel.getEventById(secondElem.id).setInternalUnion(parseInt(newFlux.id));
+                bushyApp.bushyModel.getUnionById(bushyApp.unionCounter - 1).setEntry(parseInt(firstElem.id));
+                bushyApp.bushyModel.getUnionById(bushyApp.unionCounter - 1).setExit(parseInt(secondElem.id));
+            }
         }
 
         else if (firstElem.type === 'n' && secondElem.type === 'i') {
-            //var influx = bushyApp.bushyModel.unions[secondElem.id]
-            bushyApp.bushyModel.events[firstElem.id].setExternalUnion(secondElem.id);
+            bushyApp.bushyModel.getEventById(firstElem.id).setExternalUnion(parseInt(secondElem.id));
 
             if (firstElem.portNum == 4) {
-                bushyApp.bushyModel.unions[secondElem.id].setTopEntry(firstElem.id);
+                bushyApp.bushyModel.getUnionById(secondElem.id).setTopEntry(parseInt(firstElem.id));
             }
             else if (firstElem.portNum == 3) {
-                bushyApp.bushyModel.unions[secondElem.id].setLeftEntry(firstElem.id);
+                bushyApp.bushyModel.getUnionById(secondElem.id).setLeftEntry(parseInt(firstElem.id));
             }
         }
 
         else if (firstElem.type === 'i' && secondElem.type === 'n') {
-            var influx = bushyApp.bushyModel.unions[firstElem.id];
-            bushyApp.bushyModel.events[secondElem.id].setInternalUnion(firstElem.id);
+            bushyApp.bushyModel.getEventById(secondElem.id).setInternalUnion(parseInt(firstElem.id));
 
             if (secondElem.portNum == 1) {
-                bushyApp.bushyModel.unions[firstElem.id].setRightExit(secondElem.id);
+                bushyApp.bushyModel.getUnionById(firstElem.id).setRightExit(parseInt(secondElem.id));
             }
             if (secondElem.portNum == 2) {
-                bushyApp.bushyModel.unions[firstElem.id].setBottomExit(secondElem.id);
+                bushyApp.bushyModel.getUnionById(firstElem.id).setBottomExit(parseInt(secondElem.id));
             }
         }
 
         else if (firstElem.type === 'n' && secondElem.type === 'f') {
-            var furcation = bushyApp.bushyModel.unions[secondElem.id];
-            bushyApp.bushyModel.events[firstElem.id].setExternalUnion(secondElem.id);
-            bushyApp.bushyModel.unions[secondElem.id].setEntry(firstElem.id);
+            bushyApp.bushyModel.getEventById(firstElem.id).setExternalUnion(parseInt(secondElem.id));
+            bushyApp.bushyModel.getUnionById(secondElem.id).setEntry(parseInt(firstElem.id));
         }
 
         else if (firstElem.type === 'f' && secondElem.type === 'n') {
-            var furcation = bushyApp.bushyModel.unions[firstElem.id];
-            bushyApp.bushyModel.events[secondElem.id].setInternalUnion(firstElem.id);
-            bushyApp.bushyModel.unions[firstElem.id].setExit(secondElem.id);
+            bushyApp.bushyModel.getEventById(secondElem.id).setInternalUnion(parseInt(firstElem.id));
+            bushyApp.bushyModel.getUnionById(firstElem.id).setExit(parseInt(secondElem.id));
         }
 
         else if (firstElem.type === 'n' && secondElem.type === 'c') {
-            var conflux = bushyApp.bushyModel.unions[secondElem.id];
-            bushyApp.bushyModel.events[firstElem.id].setExternalUnion(secondElem.id);
-            bushyApp.bushyModel.unions[secondElem.id].setEntry(firstElem.id);
+            bushyApp.bushyModel.getEventById(firstElem.id).setExternalUnion(parseInt(secondElem.id));
+            bushyApp.bushyModel.getUnionById(secondElem.id).setEntry(parseInt(firstElem.id));
         }
 
         else if (firstElem.type === 'c' && secondElem.type === 'n') {
-            var conflux = bushyApp.bushyModel.unions[firstElem.id];
-            bushyApp.bushyModel.events[secondElem.id].setInternalUnion(firstElem.id);
-            bushyApp.bushyModel.unions[firstElem.id].setExit(secondElem.id);
+            bushyApp.bushyModel.getEventById(secondElem.id).setInternalUnion(parseInt(firstElem.id));
+            bushyApp.bushyModel.getUnionById(firstElem.id).setExit(parseInt(secondElem.id));
         }
     }
 }

@@ -62,9 +62,17 @@ furcUnion.prototype.setExit = function(eventId) {
     this.exit.push(eventId);
 }
 
+furcUnion.prototype.findInExit = function(eventId) {
+    for (var i = 0; i < this.exit.length; i++) {
+        if (this.exit[i] == eventId) {
+            return true;
+        }
+    }
+}
+
 furcUnion.prototype.deleteExit = function(idToDelete) {
     for (var i = 0; i < this.exit.length; i++) {
-        if (this.exit[i] === idToDelete) {
+        if (this.exit[i] == idToDelete) {
             this.exit.remove(i);
         }
     }
@@ -81,6 +89,21 @@ extend(confluxUnion, bushyUnion);
 confluxUnion.prototype.setEntry = function (eventId) {
     this.entry.push(eventId);
 }
+confluxUnion.prototype.findInEntry = function(eventId) {
+    for (var i = 0; i < this.entry.length; i++) {
+        if (this.entry[i] == eventId) {
+            return true;
+        }
+    }
+}
+confluxUnion.prototype.deleteEntry = function(idToDelete) {
+    for (var i = 0; i < this.entry.length; i++) {
+        if (this.entry[i] == idToDelete) {
+            this.entry.remove(i);
+        }
+    }
+}
+
 
 // utilities functions
 function extend(Child, Parent) {

@@ -2,6 +2,7 @@
 /*global $, bushApp*/
 
 bushApp.element = {
+    app: window.parent.bushyApp,
     pattern:        /^([a-z])(\d+)$/,
     ports: {
         pattern:    /^(\w+)(\d+)_(\d+)$/,
@@ -140,6 +141,9 @@ bushApp.element = {
         elemID = letter + '0';
 
         if (union) {
+            elemID = letter + (this.app.unionCounter - 1 || 0);
+        }
+            /*
             var influxes = $('.influx');
             var furcs = $('.furcation');
             var confluxes = $('.conflux');
@@ -155,6 +159,8 @@ bushApp.element = {
             furcs = getLast(furcs);
             confluxes = getLast(confluxes);
             var maxLastId;
+
+            console.log(this.app);
 
             if (influxes && furcs && confluxes) {
                 maxLastId = Math.max.apply(Math, [influxes, furcs, confluxes]);
@@ -174,7 +180,7 @@ bushApp.element = {
                 maxLastId = 0;
             }
             elemID = letter + maxLastId;
-        }
+        }*/
         else {
             elems = $('.' + type)
             if (elems.length !== 0) {
