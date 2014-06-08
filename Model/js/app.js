@@ -32,6 +32,23 @@ var bushyApp = {
         }
     },
     removeEvent: function(id) {
+
+       if (typeof this.bushyModel.getEventById(id).externalUnion == 'number') {
+           var externalUnion = this.bushyModel.getUnionById(this.bushyModel.getEventById(id).externalUnion);
+       }
+       if (externalUnion && externalUnion.type =='flux') {
+           this.bushyModel.getEventById(externalUnion.exit).setInternalUnion();
+           this.removeUnion(externalUnion.id);
+       }
+
+       if (typeof this.bushyModel.getEventById(id).internalUnion == 'number') {
+           var internalUnion = this.bushyModel.getUnionById(this.bushyModel.getEventById(id).internalUnion);
+       }
+       if (internalUnion && internalUnion.type =='flux') {
+           this.bushyModel.getEventById(internalUnion.entry).setExternalUnion();
+           this.removeUnion(internalUnion.id);
+       }
+
         this.bushyModel.deleteEvent(id);
 
         if (this.bushyModel.events[0] != undefined) {

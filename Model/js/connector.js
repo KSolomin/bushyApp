@@ -5,11 +5,10 @@ var connector = {
             bushyApp.addUnion('flux');
             var newFlux = bushyApp.bushyModel.unions[bushyApp.unionCounter - 1];
 
-            bushyApp.bushyModel.events[firstElem.id].setExternalUnion(newFlux);
-            bushyApp.bushyModel.events[secondElem.id].setInternalUnion(newFlux);
-            bushyApp.bushyModel.unions[bushyApp.unionCounter - 1].setEntry(bushyApp.bushyModel.events[firstElem.id]);
-            bushyApp.bushyModel.unions[bushyApp.unionCounter - 1].setExit(bushyApp.bushyModel.events[secondElem.id]);
-            return true
+            bushyApp.bushyModel.getEventById(firstElem.id).setExternalUnion(parseInt(newFlux.id));
+            bushyApp.bushyModel.getEventById(secondElem.id).setInternalUnion(parseInt(newFlux.id));
+            bushyApp.bushyModel.getUnionById(bushyApp.unionCounter - 1).setEntry(parseInt(firstElem.id));
+            bushyApp.bushyModel.getUnionById(bushyApp.unionCounter - 1).setExit(parseInt(secondElem.id));
         }
 
         else if (firstElem.type === 'n' && secondElem.type === 'i') {

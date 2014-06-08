@@ -14,6 +14,13 @@ Bush.prototype = {
     rename: function(name) {
         this.name = name;
     },
+    getEventById: function(id) {
+        for (var i = 0; i < this.events.length; i++) {
+            if (this.events[i].id == id) {
+                return this.events[i];
+            }
+        }
+    },
     addEvent: function(id, type) {
         switch (type) {
             case 'ia':
@@ -57,6 +64,13 @@ Bush.prototype = {
             default:
                 console.log('Fuck you: the type of union is incorrect');
                 break;
+        }
+    },
+    getUnionById: function(id) {
+        for (var i = 0; i < this.unions.length; i++) {
+            if (this.unions[i].id == id) {
+                return this.unions[i];
+            }
         }
     },
     deleteUnion: function(id) {

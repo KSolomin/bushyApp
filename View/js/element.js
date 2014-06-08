@@ -173,7 +173,6 @@ bushApp.element = {
             } else {
                 maxLastId = 0;
             }
-            console.log(maxLastId);
             elemID = letter + maxLastId;
         }
         else {
