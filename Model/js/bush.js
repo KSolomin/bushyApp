@@ -22,7 +22,7 @@ Bush.prototype = {
     addEvent: function(id, type) {
         switch (type) {
             case 'ia':
-                this.events.push(new iaNode(id));
+                this.events.push(new iaNode(parseInt(id)));
                 break;
             case 'ib':
                 this.events.push(new ibNode(id));
@@ -48,16 +48,16 @@ Bush.prototype = {
     addUnion: function(id, type) {
         switch (type) {
             case 'flux':
-                this.unions.push(new fluxUnion(id));
+                this.unions.push(new fluxUnion(parseInt(id)));
                 break;
             case 'influx':
-                this.unions.push(new influxUnion(id));
+                this.unions.push(new influxUnion(parseInt(id)));
                 break;
             case 'furcation':
-                this.unions.push(new furcUnion(id));
+                this.unions.push(new furcUnion(parseInt(id)));
                 break;
             case 'conflux':
-                this.unions.push(new confluxUnion(id));
+                this.unions.push(new confluxUnion(parseInt(id)));
                 break;
             default:
                 console.log('Fuck you: the type of union is incorrect');

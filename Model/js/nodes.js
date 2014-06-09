@@ -1,12 +1,14 @@
 function bushyNode(id, type) {
     this.id = id;
     this.type = type;
+    this.multifluxed = false;
 }
 
 bushyNode.prototype = {
     id: '',
     name: '',
     type: '',
+    multifluxed: false,
     rename: function(name) {
         this.name = name;
     },
@@ -55,6 +57,10 @@ iiNode.prototype.setInternalUnion = function(unionId) {
 iiNode.prototype.externalUnion = '';
 iiNode.prototype.setExternalUnion = function(unionId) {
     this.externalUnion = unionId;
+}
+
+iiNode.prototype.setMultifluxed = function(val) {
+    this.multifluxed = val;
 }
 
 function iiiNode(id) {

@@ -1,11 +1,13 @@
 <html>
 <head>
+    <title>Event Bush Application</title>
     <script src="lib/underscore.js"></script>
     <script src="http://yui.yahooapis.com/3.16.0/build/yui/yui-min.js"></script>
     <script src="lib/jquery.js"></script>
     <script src="Model/js/bush.js"></script>
     <script src="Model/js/nodes.js"></script>
     <script src="Model/js/unions.js"></script>
+    <script src="Model/js/net-service.js"></script>
     <script src="Model/js/connector.js"></script>
     <script src="Model/js/app.js"></script>
     <script src="run.js"></script>
@@ -43,7 +45,7 @@
                 Main functions:
                 <div class="main-functions">
                     <button class="button" onclick="console.log(bushyApp.bushyModel)">Log the bush</button>
-                    <button class="button" onclick="">...</button>
+                    <button class="button" onclick="bushyApp.loadJson()">Load a stub</button>
                     <button class="button" onclick="">...</button>
                 </div>
             </div>

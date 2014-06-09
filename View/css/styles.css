@@ -12,6 +12,14 @@
   visibility: visible;
 }
 
+.disabled {
+   background-color: red;
+}
+
+.enabled {
+    background-color: transparent;
+}
+
 .hidden {
   visibility: hidden;
 }

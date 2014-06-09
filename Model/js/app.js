@@ -1,17 +1,22 @@
-// Эта хрень должна соединять модель с вьюхой - куст с графоном
 var bushyApp = {
     bushyView: null,
     bushyModel: new Bush(1),
-    connector: connector,
+    connector: connector, //better through constructor
     eventCounter: 0,
     unionCounter: 0,
+    netService: netService,
+    loadJson: function() {
+        this.bushyModel = netService.loadFromJson();
+    },
     addEvent: function(type) {
         this.bushyModel.addEvent(this.eventCounter, type);
+        console.log('Added new event: ' + this.eventCounter);
         this.eventCounter++;
         return this.bushyView.node.create(type);
     },
     addUnion: function(type) {
         this.bushyModel.addUnion(this.unionCounter, type);
+        console.log('Added new union: ' + this.unionCounter);
         this.unionCounter++;
         switch (type) {
             case 'flux':
@@ -26,17 +31,32 @@ var bushyApp = {
                 return this.bushyView.conflux.create();
                 break;
             default:
-                console.log('Fuck you: the type of union is incorrect');
+                console.log('The type of union is incorrect');
                 break;
         }
     },
     removeEvent: function(id) {
 
+        if (this.bushyModel.getEventById(id).multifluxed == true) {
+           var unionsToDelete = [];
+           for (var i = 0; i < bushyApp.bushyModel.unions.length; i++) {
+               if (bushyApp.bushyModel.unions[i].type == 'flux' && bushyApp.bushyModel.unions[i].entry == id) {
+                   unionsToDelete.push(bushyApp.bushyModel.unions[i].id);
+               }
+           }
+            if (unionsToDelete.length > 0) {
+                for (var i = 0; i < unionsToDelete.length; i++) {
+                    this.removeUnion(unionsToDelete[i]);
+                }
+            }
+       }
+
         //удаляем unions, если они были присоед. к ивенту
        if (typeof this.bushyModel.getEventById(id).externalUnion == 'number') {
            var externalUnion = this.bushyModel.getUnionById(this.bushyModel.getEventById(id).externalUnion);
+           console.log(externalUnion);
        }
-       if (externalUnion && externalUnion.type =='flux' && this.bushyModel.getEventById(externalUnion.exit).type != 'iii') {
+       if (externalUnion && externalUnion.type =='flux') { //&& this.bushyModel.getEventById(externalUnion.exit).type != 'iii'
            this.bushyModel.getEventById(externalUnion.exit).setInternalUnion();
            this.removeUnion(externalUnion.id);
        }
@@ -99,6 +119,10 @@ var bushyApp = {
     },
 
     removeUnion: function(id) {
+        if (typeof this.bushyModel.getUnionById(id) == 'object') {
+            if (id == '') {
+                return; // Разберись почему
+            }
         // обновляем входы у ивентов если они были присоединеын к юниону
         if (typeof this.bushyModel.getUnionById(id).entry == 'number') {
             var entry =  this.bushyModel.getEventById(this.bushyModel.getUnionById(id).entry);
@@ -146,5 +170,6 @@ var bushyApp = {
             this.unionCounter = this.bushyModel.unions[this.bushyModel.unions.length - 1].id + 1;
         }
         else this.unionCounter = 0;
+    }
     }
 }

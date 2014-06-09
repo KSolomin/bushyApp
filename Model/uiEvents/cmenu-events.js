@@ -3,8 +3,6 @@
 
 function createLiHandler(type) {
     'use strict';
-    // это ОЧЕНЬ кривое решение - создавать обработчик событий который биндится к модели из iframe
-    // пока не знаю как сделать лучше
     var app = window.parent.bushyApp;
     $('#create-' + type).off('click.cmenu').on('click.cmenu', function (e) {
 
@@ -44,7 +42,7 @@ function createLiHandler(type) {
                 elem = app.addUnion('conflux');
                 break;
             default:
-                window.console.log('Fuck you: Unknown type of element!');
+                window.console.log('Unknown type of element!');
                 return;
         }
 
@@ -68,12 +66,23 @@ function createLiHandler(type) {
         var elementId = selectedElement.attr('id').substr(1);
         var elementType = selectedElement.attr('id').substr(0, 1);
 
+        //проверка, какого типа ивент
+        if (elementType == 'n') {
+            if (app.bushyModel.getEventById(elementId).type == 'ii' &&
+                (typeof app.bushyModel.getEventById(elementId).externalUnion != ('number' || 'object'))) {
+                $(document).find('#multi-flux').show();
+            } else {
+                $(document).find('#multi-flux').hide();
+            }
+        } else {
+            $(document).find('#multi-flux').hide();
+        }
+
         bushApp.cmenu.hide('.create');
         bushApp.cmenu.show('.remove');
         bushApp.cmenu.position('.remove', e.pageX, e.pageY);
 
         $('#remove-element').off('click.cmenu').on('click.cmenu', function () {
-
          bushApp.node.removeConnectedArcs(selectedElement);
 
             switch (elementType) {
@@ -93,27 +102,26 @@ function createLiHandler(type) {
                     console.log('Unknown type of element');
             }
 
-
          selectedElement.remove();
-         $(this).off('click.cmenu');
+            $(this).off('click.cmenu');
          });
+
+        $('#multi-flux').off('click.cmenu').on('click.cmenu', function () {
+            if (app.bushyModel.getEventById(elementId).multifluxed) {
+                app.bushyModel.getEventById(elementId).setMultifluxed(false);
+                var rightPort = $(selectedElement).find('#' + elementType + elementId+ '_7');
+                rightPort.attr('id', elementType + elementId + '_3');
+            } else {
+                app.bushyModel.getEventById(elementId).setMultifluxed(true);
+                var rightPort = $(selectedElement).find('#' + elementType + elementId+ '_3');
+                rightPort.attr('id', elementType + elementId + '_7');
+            }
+            console.log('Currently multifluxed: ' + app.bushyModel.getEventById(elementId).multifluxed);
+        });
 
         $(document).off('click.cmenu').on('click.cmenu', function () {
             bushApp.cmenu.hide('.remove');
             $(this).off('click.cmenu');
         });
-    });
-
-    $('#portmenu').off('click.cmenu').on('click.cmenu', function (e) {
-        var elem, mousePos;
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        mousePos = {
-            x: e.pageX,
-            y: e.pageY
-        };
-
     });
 };

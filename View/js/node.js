@@ -31,6 +31,10 @@ bushApp.node = {
             ports.filter('#' + nodeID + '_4')
                 .css('left', Math.floor(nodeDims.width / (2 * bushApp.grid.cellsize)) * bushApp.grid.cellsize + 'px')
                 .css('top', Math.floor(nodeDims.height / bushApp.grid.cellsize) * bushApp.grid.cellsize + 'px');
+
+            ports.filter('#' + nodeID + '_7')
+                .css('left', Math.floor(nodeDims.width / bushApp.grid.cellsize) * bushApp.grid.cellsize + 'px')
+                .css('top', Math.floor(nodeDims.height / (2 * bushApp.grid.cellsize)) * bushApp.grid.cellsize + 'px');
         }
     },
     create:                 function (type) {
@@ -78,7 +82,7 @@ bushApp.node = {
                     .append($('<p>Event description goes here.</p>'))
                     .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_1'))
                     .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_2'))
-                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_3'))
+                    .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_3')) ///!!!!!
                     .append($('<div></div>').attr('class', 'port hidden').attr('id', nodeID + '_4'));
 
                 node = $('#' + nodeID);

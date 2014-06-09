@@ -46,11 +46,9 @@ $(document).off('mousedown.port', '.port').on('mousedown.port', '.port', functio
                 portNum: res[3]
             }
 
-
             if (closest.dist < app.bushyView.arc.snapDistance) {
                 app.connector.setConnection(startElement, endElement);
 
-                // поооолная чушь:
                 app.bushyView.arc.connectPorts(canvas, startPort, closest.port);
                  if (endElement.type === 'i' || endElement.type === 'f' || endElement.type === 'c') {
                      canvas.next('.arrow').remove();

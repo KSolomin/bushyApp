@@ -2,8 +2,8 @@
 /*global $, jQuery, bushApp*/
 
 bushApp.grid = {
-    width:          3840,
-    height:         2160,
+    width:          1920, // 3840
+    height:         800, // 2160
     color:          '#000',  //grid lines color;
     cellsize:       10,     //cellsize in pixels;
     subdivisions:   5,      //number of grid subdivisions

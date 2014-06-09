@@ -5,9 +5,9 @@
         <meta charset='utf-8' />
         <link href="css/styles.css" rel='stylesheet' />
     </head>
-    <body>
+    <body oncontextmenu="return false;">
         <ul class='cmenu create hidden'>
-            <li id='create-node'><img src='img/empty.gif' />Default Node</li>
+            <!--<li id='create-node'><img src='img/empty.gif' />Default Node</li>-->
             <li id='create-ia'><img src='img/empty.gif' />Ia Node</li>
             <li id='create-ib'><img src='img/empty.gif' />Ib Node</li>
             <li id='create-ii'><img src='img/empty.gif' />II Node</li>
@@ -19,10 +19,7 @@
 
         <ul class='cmenu remove hidden'>
             <li id='remove-element'><img src='img/empty.gif' />Remove</li>
-        </ul>
-
-        <ul class="cmenu portmenu hidden">
-            <li id='port-add'><img src='img/empty.gif' />Add flux</li>
+            <li id='multi-flux'><img src='img/empty.gif' />Switch on/off multiflux</li>
         </ul>
 
         <canvas id='grid'></canvas>
