@@ -37,10 +37,12 @@ bushApp.node = {
                 .css('top', Math.floor(nodeDims.height / (2 * bushApp.grid.cellsize)) * bushApp.grid.cellsize + 'px');
         }
     },
-    create:                 function (type) {
+    create:                 function (type, id) {
         'use strict';
         var node, nodeID;
-        nodeID = bushApp.element.generateID('node');
+        if (!id) {
+            nodeID = bushApp.element.generateID('node');
+        } else nodeID = 'n' + id;
         switch(type) {
             case 'ia':
                 $('<div></div>')

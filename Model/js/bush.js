@@ -1,4 +1,3 @@
-//сраный кустяра. он же bushyModel в представлении bushyApp.
 function Bush(userId) {
     this.user = userId;
 }

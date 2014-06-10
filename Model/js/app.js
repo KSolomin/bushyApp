@@ -2,17 +2,22 @@ var bushyApp = {
     bushyView: null,
     bushyModel: new Bush(1),
     connector: connector, //better through constructor
+    painter: painter,
     eventCounter: 0,
     unionCounter: 0,
     netService: netService,
     loadJson: function() {
-        this.bushyModel = netService.loadFromJson();
+        this.bushyModel = this.netService.loadFromJson();
+        this.painter.paintElements(this.bushyModel);
+        this.painter.paintConnections(this.bushyModel);
     },
     addEvent: function(type) {
         this.bushyModel.addEvent(this.eventCounter, type);
+        var newEvent = this.bushyView.node.create(type);
         console.log('Added new event: ' + this.eventCounter);
+
         this.eventCounter++;
-        return this.bushyView.node.create(type);
+        return newEvent;
     },
     addUnion: function(type) {
         this.bushyModel.addUnion(this.unionCounter, type);

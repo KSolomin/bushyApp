@@ -9,6 +9,13 @@ bushyNode.prototype = {
     name: '',
     type: '',
     multifluxed: false,
+    position: {
+        x: 50,
+        y: 50
+    },
+    setPosition: function(pos) {
+        this.position = pos;
+    },
     rename: function(name) {
         this.name = name;
     },

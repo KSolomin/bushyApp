@@ -8,6 +8,13 @@ bushyUnion.prototype = {
     type: '',
     entry: '',
     exit: '',
+    position: {
+        x: 50,
+        y: 50
+    },
+    setPosition: function(pos) {
+        this.position = pos;
+    },
     setType: function(type) {
         this.type = type;
     },
@@ -25,6 +32,19 @@ function fluxUnion(id) {
 }
 
 extend(fluxUnion, bushyUnion);
+
+fluxUnion.prototype.entryPort = '';
+fluxUnion.prototype.exitPort = '';
+fluxUnion.prototype.setEntryPort = function(port) {
+    if (port == 1 || 2) {
+        this.entryPort = port;
+    } else console.log('Invalid entry port for flux connection');
+}
+fluxUnion.prototype.setExitPort = function(port) {
+    if (port == 3 || 4) {
+        this.exitPort = port;
+    } else console.log('Invalid entry port for flux connection');
+}
 
 function influxUnion(id) {
     this.id = id;

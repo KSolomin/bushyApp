@@ -33,12 +33,14 @@ $(document).off('mouseenter.element', '.element').on('mouseenter.element', '.ele
 $(document).off('mousedown.element').on('mousedown.element', '.element', function (e) {
     'use strict';
 
-    var mouseIsDown, moreThanDelta, startPos, mousePos, mousePosWithOffset, nodePos, delta, deltaX, deltaY, selectedNode, mouseOffset, connectedArcs, i, arcPorts, arcPortsNums, arcPortsPos;
+    var mouseIsDown, moreThanDelta, startPos, mousePos, mousePosWithOffset, nodePos, delta, deltaX, deltaY, selectedNode, mouseOffset, app, pattern;
 
+    app = window.parent.bushyApp;
     selectedNode    = $(this);
     moreThanDelta   = false;
     mouseIsDown     = true;
     delta           = 20;
+    pattern         = /^(\w)(\d+)$/;
 
     startPos = {
         x: e.pageX,
@@ -89,10 +91,23 @@ $(document).off('mousedown.element').on('mousedown.element', '.element', functio
 
         bushApp.grid.snap(selectedNode);
 
+        var res = pattern.exec(selectedNode.attr('id'));
+        var result = {
+            type: res[1],
+            id: res[2]
+        };
+
+        if (result.type == 'n') {
+            app.bushyModel.getEventById(parseInt(result.id)).setPosition(bushApp.element.getPosition(selectedNode));
+            console.log(app.bushyModel.getEventById(result.id).position);
+        } else {
+            app.bushyModel.getUnionById(parseInt(result.id)).setPosition(bushApp.element.getPosition(selectedNode));
+            console.log(app.bushyModel.getUnionById(result.id).position);
+        }
+
         $(document).off('mousemove.element');
         $(document).off('mouseup.element');
-    });
-    //continue from here;
+    });  //continue from here;
 });      //move elements with mouse;
 
 showHideConnectiveBorders('influx');

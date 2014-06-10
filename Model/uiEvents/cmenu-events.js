@@ -6,7 +6,7 @@ function createLiHandler(type) {
     var app = window.parent.bushyApp;
     $('#create-' + type).off('click.cmenu').on('click.cmenu', function (e) {
 
-        var elem, mousePos;
+        var elem, mousePos, elemType;
 
         e.preventDefault();
         e.stopPropagation();
@@ -19,27 +19,35 @@ function createLiHandler(type) {
         switch (type) {
             case 'node':
                 elem = app.addEvent();
+                elemType = 'node';
                 break;
             case 'ia':
                 elem = app.addEvent('ia');
+                elemType = 'node';
                 break;
             case 'ib':
                 elem = app.addEvent('ib');
+                elemType = 'node';
                 break;
             case 'ii':
                 elem = app.addEvent('ii');
+                elemType = 'node';
                 break;
             case 'iii':
                 elem = app.addEvent('iii');
+                elemType = 'node';
                 break;
             case 'influx':
                 elem = app.addUnion('influx');
+                elemType = 'union';
                 break;
             case 'furcation':
                 elem = app.addUnion('furcation');
+                elemType = 'union';
                 break;
             case 'conflux':
                 elem = app.addUnion('conflux');
+                elemType = 'union';
                 break;
             default:
                 window.console.log('Unknown type of element!');
@@ -49,6 +57,16 @@ function createLiHandler(type) {
         app.bushyView.cmenu.hide('.create');
         app.bushyView.element.setPosition(elem, mousePos);
         app.bushyView.grid.snap(elem);
+
+        var position = app.bushyView.element.getPosition(elem);
+        console.log('It\'s position');
+        if (elemType == 'node') {
+            app.bushyModel.getEventById(app.eventCounter - 1).setPosition(position);
+            console.log(app.bushyModel.getEventById(app.eventCounter - 1).position);
+        } else {
+            app.bushyModel.getUnionById(app.unionCounter - 1).setPosition(position);
+            console.log(app.bushyModel.getUnionById(app.unionCounter - 1).position);
+    }
 
         $(this).off('click.cmenu');
     });

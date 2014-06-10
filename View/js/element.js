@@ -143,44 +143,6 @@ bushApp.element = {
         if (union) {
             elemID = letter + (this.app.unionCounter - 1 || 0);
         }
-            /*
-            var influxes = $('.influx');
-            var furcs = $('.furcation');
-            var confluxes = $('.conflux');
-
-            var getLast = function(arr) {
-                if (arr.length) {
-                    var res = parseInt(arr.last().attr('id').substr(1));
-                    return res + 1;
-                }
-            };
-
-            influxes = getLast(influxes);
-            furcs = getLast(furcs);
-            confluxes = getLast(confluxes);
-            var maxLastId;
-
-            console.log(this.app);
-
-            if (influxes && furcs && confluxes) {
-                maxLastId = Math.max.apply(Math, [influxes, furcs, confluxes]);
-            } else if (influxes && furcs) {
-                maxLastId = Math.max.apply(Math, [influxes, furcs]);
-            } else if (influxes && confluxes) {
-                maxLastId = Math.max.apply(Math, [influxes, confluxes]);
-            } else if (furcs && confluxes) {
-                maxLastId = Math.max.apply(Math, [furcs, confluxes]);
-            } else if (influxes) {
-                maxLastId = influxes;
-            } else if (furcs) {
-                maxLastId = furcs;
-            } else if (confluxes) {
-                maxLastId = confluxes;
-            } else {
-                maxLastId = 0;
-            }
-            elemID = letter + maxLastId;
-        }*/
         else {
             elems = $('.' + type)
             if (elems.length !== 0) {
@@ -193,12 +155,14 @@ bushApp.element = {
         return elemID;
 
     },
-    create:         function (type) {
+    create:         function (type, id) {
         'use strict';
 
         var elem, elemID, insPoint, portNum;
 
-        elemID = bushApp.element.generateID(type);
+        if (!id) {
+            elemID = bushApp.element.generateID(type);
+        } else elemID = id;
         insPoint = $('script').first();
 
         switch (type) {
@@ -283,33 +247,6 @@ bushApp.element = {
 
         return closest;
     },
-    /*getType:        function (element) {
-        'use strict';
-
-        var letter, type;
-
-        letter = bushApp.element.pattern.exec(element.attr('id'))[1];
-
-        switch (letter) {
-        case 'n':
-            type = 'node';
-            break;
-        case 'i':
-            type = 'influx';
-            break;
-        case 'f':
-            type = 'furcation';
-            break;
-        case 'c':
-            type = 'conflux';
-            break;
-        default:
-            type = null;
-            window.console.log('Unknown type of element!');
-            break;
-        }
-        return type;
-    }, */
     showBorders:    function (element) {
         'use strict';
 
