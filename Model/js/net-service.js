@@ -1,6 +1,13 @@
 var netService = {
-    formJson: function(bush) {
-        // dunno
+    saveJson: function(bush) {
+        // not ready yet: not sure what to do with it
+        return {
+            user: bush.user,
+            id: bush.id,
+            name: bush.name,
+            events: bush.events,
+            unions: bush.unions
+        }
     },
     loadFromJson: function() {
         var mockJson = {
@@ -42,7 +49,7 @@ var netService = {
     },
 
     typeCastJson: function(bush) {
-        bush.__proto__ = Bush.prototype; // C'est le genial)
+        bush.__proto__ = Bush.prototype;
         for (var i = 0; i < bush.events.length; i++) {
             switch (bush.events[i].type) {
                 case 'ia':

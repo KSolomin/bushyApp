@@ -50,8 +50,6 @@ $(document).off('mousedown.port', '.port').on('mousedown.port', '.port', functio
                 app.connector.setConnection(startElement, endElement);
 
                 app.bushyView.arc.connectPorts(canvas, startPort, closest.port);
-
-                console.log(closest.port);
                  if (endElement.type === 'i' || endElement.type === 'f' || endElement.type === 'c') {
                      canvas.next('.arrow').remove();
                  }

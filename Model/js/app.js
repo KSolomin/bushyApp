@@ -7,9 +7,13 @@ var bushyApp = {
     unionCounter: 0,
     netService: netService,
     loadJson: function() {
+        this.painter.clearTheGrid();
         this.bushyModel = this.netService.loadFromJson();
         this.painter.paintElements(this.bushyModel);
         this.painter.paintConnections(this.bushyModel);
+    },
+    saveJson: function() {
+
     },
     addEvent: function(type) {
         this.bushyModel.addEvent(this.eventCounter, type);
